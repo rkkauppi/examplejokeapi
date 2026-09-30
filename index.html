@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExampleJokeAPI</title>
+</head>
+<body onLoad="getJoke();">
+    <div id="button">
+        <label for="getJokeButton">
+            <p>Press the button to get a random joke.</p>
+        </label>
+        <button onClick="getJoke();" type="button" id="getJokeButton">Get joke</button>
+    </div>
+    <div id="joke"></div>
+    <script>
+        function getJoke() {
+            fetch("https://official-joke-api.appspot.com/jokes/random")
+            .then(response => response.json())
+            .then(data => document.getElementById("joke").innerHTML =
+            "<p>" + data.setup + "</p><p>" + data.punchline + "<p>");    
+        }
+    </script>
+</body>
+</html>
